@@ -1,0 +1,236 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Modern Font */
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Gradient Background */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smooth fonts on Firefox */
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent Background */
+    backdrop-filter: blur(10px); /* Frosted Glass Effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari Compatibility */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.dark-mode-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+#taskInput,
+#dueDateInput,
+#priorityInput,
+#categoryInput {
+    width: 25%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1); /* Frosted Input Fields */
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+#taskInput:focus,
+#dueDateInput:focus,
+#priorityInput:focus,
+#categoryInput:focus {
+    background: rgba(255, 255, 255, 0.2); /* Highlight on Focus */
+}
+
+#addTaskBtn {
+    padding: 0.8rem 1rem;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient Button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#addTaskBtn:hover {
+    transform: scale(1.05); /* Slight Enlargement on Hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin: 1rem 0;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff7eb3, #ff758c); /* Gradient Progress Bar */
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.export-import {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.export-import button {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.export-import button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-in-out forwards;
+    cursor: grab;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.priority {
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.priority.high {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.priority.medium {
+    background: #f1c40f;
+    color: #fff;
+}
+
+.priority.low {
+    background: #2ecc71;
+    color: #fff;
+}
+
+li button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+li button:hover {
+    color: #c0392b;
+}
+
+/* Screen Reader Only Class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .input-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #taskInput,
+    #dueDateInput,
+    #priorityInput,
+    #categoryInput {
+        width: 100%;
+    }
+
+    .filters {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
