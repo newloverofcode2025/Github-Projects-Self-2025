@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-wallet"></i> Ultimate Finance Tracker</h1>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-toggle">
+            <label for="darkModeToggle"><i class="fas fa-moon"></i> Dark Mode</label>
+            <input type="checkbox" id="darkModeToggle">
+        </div>
+
+        <!-- User Authentication -->
+        <div class="auth-section">
+            <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <button id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <button id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-container">
+            <label for="description" class="sr-only">Description</label>
+            <input type="text" id="description" placeholder="Enter description..." required aria-label="Transaction Description">
+
+            <label for="amount" class="sr-only">Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount..." required aria-label="Transaction Amount">
+
+            <label for="category" class="sr-only">Category</label>
+            <select id="category" aria-label="Transaction Category">
+                <option value="income">💰 Income</option>
+                <option value="rent">🏠 Rent</option>
+                <option value="food">🍔 Food</option>
+                <option value="shopping">🛍️ Shopping</option>
+                <option value="entertainment">🎬 Entertainment</option>
+                <option value="savings">🏦 Savings</option>
+            </select>
+
+            <button id="addTransactionBtn"><i class="fas fa-plus"></i> Add Transaction</button>
+        </div>
+
+        <!-- Budget Section -->
+        <div class="budget-section">
+            <h2>Budget Overview</h2>
+            <div class="budget-progress">
+                <progress id="budgetProgress" value="0" max="100"></progress>
+                <span id="budgetPercentage">0%</span>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary">
+            <div class="summary-card">
+                <h3>Total Income</h3>
+                <p id="totalIncome">$0</p>
+            </div>
+            <div class="summary-card">
+                <h3>Total Expenses</h3>
+                <p id="totalExpenses">$0</p>
+            </div>
+            <div class="summary-card">
+                <h3>Savings</h3>
+                <p id="savings">$0</p>
+            </div>
+        </div>
+
+        <!-- Transactions List -->
+        <h2>Transactions</h2>
+        <ul id="transactionsList"></ul>
+
+        <!-- Export/Import Buttons -->
+        <div class="export-import">
+            <button id="exportCSVBtn"><i class="fas fa-download"></i> Export CSV</button>
+            <button id="exportPDFBtn"><i class="fas fa-file-pdf"></i> Export PDF</button>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <canvas id="financeChart"></canvas>
+        </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
